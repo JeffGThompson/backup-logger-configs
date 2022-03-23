@@ -1,0 +1,6 @@
+- name: Logger Config Backup Playbook
+  hosts: all
+  become: yes
+
+  roles:
+    - common

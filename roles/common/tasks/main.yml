@@ -1,0 +1,12 @@
+---
+
+- name: Run Backup Script
+  command: "{{ arcsight_home_path }}/bin/scripts/configbackup.sh"
+  environment:
+    ARCSIGHT_HOME: "{{ arcsight_home_path }}"
+
+#Grab the .tar.gz from the server
+- fetch:
+    src: "{{ arcsight_home_path }}/tmp/configs/configs.tar.gz"
+    dest: "/tmp/backupConfigs-{{ ansible_hostname }}-{{ inventory_hostname }}/{{ date }}-backupConfigs.tar.gz"
+    flat: yes
